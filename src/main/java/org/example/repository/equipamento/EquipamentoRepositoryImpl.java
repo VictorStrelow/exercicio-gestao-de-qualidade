@@ -75,4 +75,24 @@ public class EquipamentoRepositoryImpl implements EquipamentoRepository {
         return null;
     }
 
+    @Override
+    public void updateStatus(long id, String novoStatus) throws SQLException {
+        String query = """
+                UPDATE
+                Equipamento
+                SET
+                statusOperacional = ?
+                WHERE
+                id = ?
+                """;
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, novoStatus);
+            stmt.setLong(2, id);
+            stmt.executeUpdate();
+        }
+    }
+
 }

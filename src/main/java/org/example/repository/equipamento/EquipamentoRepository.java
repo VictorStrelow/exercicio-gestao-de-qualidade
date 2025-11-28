@@ -10,4 +10,6 @@ public interface EquipamentoRepository {
 
     Equipamento findById(long id) throws SQLException, RuntimeException;
 
+    void updateStatus(long id, String novoStatus) throws SQLException;
+
 }

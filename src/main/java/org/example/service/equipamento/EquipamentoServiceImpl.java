@@ -23,12 +23,20 @@ public class EquipamentoServiceImpl implements EquipamentoService {
 
     @Override
     public Equipamento buscarEquipamentoPorId(Long id) throws RuntimeException {
+        Equipamento equipamento;
+
         try {
-            return repository.findById(id);
+            equipamento = repository.findById(id);
 
         } catch (SQLException e) {
+            throw new RuntimeException("Equipamento não encontrado!" + e.getMessage());
+        }
+
+        if (equipamento == null) {
             throw new RuntimeException("Equipamento não encontrado!");
         }
+
+        return equipamento;
     }
 
 }
