@@ -5,7 +5,7 @@ public class RelatorioParadaDTO {
     private String nomeEquipamento;
     private double totalHorasParadas;
 
-    public RelatorioParadaDTO(Long equipamentoId, String nomeEquipamento, double totalHorasParadas) {
+    public RelatorioParadaDTO(String nomeEquipamento, double totalHorasParadas) {
         this.equipamentoId = equipamentoId;
         this.nomeEquipamento = nomeEquipamento;
         this.totalHorasParadas = totalHorasParadas;

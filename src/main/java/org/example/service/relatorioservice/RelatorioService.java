@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RelatorioService {
+
     List<RelatorioParadaDTO> gerarRelatorioTempoParada() throws SQLException;
 
     List<Equipamento> buscarEquipamentosSemFalhasPorPeriodo(LocalDate dataInicio, LocalDate datafim)throws SQLException;
@@ -18,4 +19,5 @@ public interface RelatorioService {
     Optional<FalhaDetalhadaDTO> buscarDetalhesCompletosFalha(long falhaId) throws SQLException;
 
     List<EquipamentoContagemFalhasDTO> gerarRelatorioManutencaoPreventiva(int contagemMinimaFalhas) throws SQLException;
+
 }

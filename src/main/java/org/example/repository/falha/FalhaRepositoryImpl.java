@@ -80,4 +80,45 @@ public class FalhaRepositoryImpl implements FalhaRepository {
         return falhas;
     }
 
+    @Override
+    public Falha updateStatus(long falhaId, String novoStatus) throws SQLException {
+        String query = """
+                UPDATE
+                Falha
+                SET status = ?
+                WHERE id = ?
+                """;
+
+        try (Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, novoStatus);
+            stmt.setLong(2, falhaId);
+            stmt.executeUpdate();
+        }
+        return null;
+    }
+
+    @Override
+    public Falha findById(long id) throws SQLException {
+        String query = """
+                SELECT * FROM Falha
+                WHERE id = ?
+                """;
+
+        try (Connection conn = org.example.database.Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setLong(1, id);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return listaFalha(rs);
+                }
+            }
+        }
+
+        return null;
+    }
+
 }

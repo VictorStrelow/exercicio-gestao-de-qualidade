@@ -10,4 +10,9 @@ public interface FalhaRepository {
     Falha save(Falha falha) throws SQLException;
 
     List<Falha> findByFailure() throws SQLException;
+
+    Falha updateStatus(long falhaId, String novoStatus) throws SQLException;
+
+    Falha findById(long id) throws SQLException;
+
 }
